@@ -1,0 +1,7 @@
+src/common/biology/libmasa_a-SequenceModifiers.o: \
+ src/common/biology/SequenceModifiers.cpp /usr/include/stdc-predef.h \
+ src/common/biology/SequenceModifiers.hpp
+
+/usr/include/stdc-predef.h:
+
+src/common/biology/SequenceModifiers.hpp:

@@ -1,0 +1,24 @@
+src/common/io/libmasa_a-SplitCellsReader.o: \
+ src/common/io/SplitCellsReader.cpp /usr/include/stdc-predef.h \
+ src/common/io/SplitCellsReader.hpp src/common/io/SeekableCellsReader.hpp \
+ src/common/io/CellsReader.hpp \
+ src/common/io/../../libmasa/libmasaTypes.hpp \
+ src/common/io/../../libmasa/IManager.hpp \
+ src/common/io/../../libmasa/libmasaTypes.hpp \
+ src/common/io/../../libmasa/Partition.hpp
+
+/usr/include/stdc-predef.h:
+
+src/common/io/SplitCellsReader.hpp:
+
+src/common/io/SeekableCellsReader.hpp:
+
+src/common/io/CellsReader.hpp:
+
+src/common/io/../../libmasa/libmasaTypes.hpp:
+
+src/common/io/../../libmasa/IManager.hpp:
+
+src/common/io/../../libmasa/libmasaTypes.hpp:
+
+src/common/io/../../libmasa/Partition.hpp:

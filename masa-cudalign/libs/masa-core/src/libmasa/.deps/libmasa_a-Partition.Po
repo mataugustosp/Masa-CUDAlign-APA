@@ -1,0 +1,6 @@
+src/libmasa/libmasa_a-Partition.o: src/libmasa/Partition.cpp \
+ /usr/include/stdc-predef.h src/libmasa/Partition.hpp
+
+/usr/include/stdc-predef.h:
+
+src/libmasa/Partition.hpp:

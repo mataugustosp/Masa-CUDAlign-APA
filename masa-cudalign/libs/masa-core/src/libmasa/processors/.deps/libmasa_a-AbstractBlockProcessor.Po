@@ -1,0 +1,11 @@
+src/libmasa/processors/libmasa_a-AbstractBlockProcessor.o: \
+ src/libmasa/processors/AbstractBlockProcessor.cpp \
+ /usr/include/stdc-predef.h \
+ src/libmasa/processors/AbstractBlockProcessor.hpp \
+ src/libmasa/processors/../libmasaTypes.hpp
+
+/usr/include/stdc-predef.h:
+
+src/libmasa/processors/AbstractBlockProcessor.hpp:
+
+src/libmasa/processors/../libmasaTypes.hpp:

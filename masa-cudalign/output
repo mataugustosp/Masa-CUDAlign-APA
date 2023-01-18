@@ -1,0 +1,164 @@
+
+[1mMASA-CUDAlign 4.0.2.1028  -  GPU tool for huge sequences alignment[0m
+[0m
+Linked with MASA - Malleable Architecture for Sequence Aligners - 1.4.2.1028
+University of Brasilia/UnB - Brazil 
+Copyright (c) 2010-2015 Edans Sandes - License GPLv3
+This program comes with ABSOLUTELY NO WARRANTY.
+
+Usage: ./cudalign [OPTIONS] [FASTA FILE #1] [FASTA FILE #2]                      
+
+FASTA FILES:            Supply two sequences in fasta format files.            
+
+
+[1mGeneral Options:[0m
+
+-h, --help              Shows this help.
+-d, --work-dir=DIR      Directory used to store files produced by the stages.
+                           Default: ./work.tmp 
+--special-rows-dir=DIR  Directory used to store the special rows produced by
+                           the gpu stages. The default is to use a subfolder of
+                           the work directory (see --work-dir parameter).
+--shared-dir=DIR        Directory used to share data between forked instances.
+--wait-part=PART        Process will wait until the conclusion of --part=PART.
+-c, --clear             Clears the work directory before any computation. This 
+                           prevents the continuation of previously interrupted 
+                           execution.
+-v, --verbose=LEVEL     Shows informative output during computation.           
+                           0: Silently;
+                           1: Only shows error messages;
+                           2: (Default) Shows progress and statistics;    
+                           3: Gives full output data.
+--fork                  Fork many processes in order to optimize performance. 
+--fork=COUNT            Fork with a limited number of processes.
+--fork=W1,W2,...,Wn     Fork with the given weight proportions.
+
+
+[1mInput Options:[0m
+
+-t, --trim=I0,I1,J0,J1  Trims sequence #1 from position I0 to I1 (inclusive).  
+                           and sequence #2 from position J0 to J1 (inclusive). 
+                           Zero represents either first and last positions.    
+                           This parameter is ignored if used together with the 
+                           --split parameter. 
+--split=COUNT           Splits sequence #2 in COUNT equal segments. This       
+	                       parameter must be used together with the            
+                           --part parameter.                                   
+--split=W1,W2,...,Wn    Splits sequence #2 in n segments with weighted         
+                           proportions. This parameter must be used            
+                           together with the --part parameter.                 
+--part=PART             When the --split parameter is used, the sequence #2 is 
+                           divided in many parts. The --part parameter selects 
+                           which part will be executed by this process.        
+                           If the --load-columns and --flush-columns parameters
+                           are not set, then the last column will be saved into
+                           a file in the current directory.                    
+--clear-n               Remove all 'N' characters on both fasta files.
+--reverse=[1|2|both]    Reverse strands of sequence 1, 2 or both.              
+--complement=[1|2|both] Generate complement (AT,CG) for sequence 1, 2 or both. 
+--reverse-complement=[1|2|both] 
+                        Generate reverse-complement (opposite strand) for      
+                           sequence 1, 2 or both. This parameter joins the     
+                           --reverse and --complement parameters. 
+
+[1mAlignment Type:[0m
+
+--alignment-start=[*|1|2|3|+] 
+--alignment-end=  [*|1|2|3|+] 
+--alignment-edges=[*|1|2|3|+][*|1|2|3|+] (start,end)
+                        Defines where the alignment can start or end.          
+                        -    *: any location.
+                        -    1: start/end of sequence 1.                       
+                        -    2: start/end of sequence 2.                       
+                        -    3: start/end of sequences 1 or 2.                 
+                        -    +: start/end of sequences 1 and 2.                
+
+[1mStage Options:[0m
+
+[1mStage #1 Options:[0m
+-1, --stage-1           Executes only the stage #1 of algorithm, i.e., returns 
+                           the best score and its coordinates. Special rows    
+                           are stored in disk to allow the execution of the    
+                           subsequent stages.
+-n, --no-flush          Do not save special rows. Using this option            
+                           in stage #1 will prevent the execution of subsequent
+                           phases.
+-p, --no-block-pruning  Does not use the block pruning optimization            
+-o, --opening-score=SCORE  	Defines an initial pruning score			       
+
+--disk-size=SIZE        Limits the disk/ram size available to the special rows.
+--ram-size=SIZE            The SIZE parameter may contain suffix M (e.g., 500M)
+                           or G (e.g., 10G). This option is ignored if used
+                           together with the --no-flush parameter. 
+                           Default values: 0/0.
+--flush-column=URL      Store the last column cells in some destination. The   
+                           URL is given in some of these formats: 
+                           file://PATH_TO_FILE 
+                           socket://0.0.0.0:LISTENING_PORT 
+--load-column=URL       Loads the first column cells from some destination. The
+                           URL is given in some of these formats: 
+                           file://PATH_TO_FILE 
+                           socket://HOSTNAME:PORT 
+--dump-blocks           Saves the result of each block in the alignment file.  
+--max-alignments        Maximum number of alignments to return. Default:1.
+--skip-stage-1          Skips execution of stage #1 and executes all remaining  
+                           stages. Stage #1 must have being previously executed
+                           and all its results must be located in the.
+                           working directory.
+
+[1mStage #2 Options:[0m
+-2, --stage-2           Executes only the stage #2 of algorithm, i.e., returns 
+                           a list of crosspoints inside the optimal alignment. 
+                           Special columns are stored in disk to allow the     
+                           execution of the subsequent stages. The disk size   
+                           available to store the special columns may be       
+                           configured using the --disk-space parameter. 
+--predicted-traceback   If there are forked processes, executes the stage #2
+                           using the predicted traceback strategy.
+
+[1mStage #3 Options:[0m
+-3, --stage-3           Executes only the stage #3 of algorithm, i.e., returns 
+                           a bigger list of crosspoints inside the optimal     
+                           alignment.
+
+[1mStage #4 Options:[0m
+-4, --stage-4           Executes only the stage #4 of algorithm, i.e., given a 
+                           list of coordinates of the optimal alignment,       
+                           increases the number of crosspoint using            
+                           Myers and Miller's algorithm, until all the         
+                           partitions are smaller than the maximum partition   
+                           size.
+--maximum-partition=SIZE 
+                        Defines the maximum partition size allowed as output   
+                           of the stage #4. This parameter limits the size of  
+                           partitions processed in stage #5. 
+                           Default Value: 16 
+--stage-4-strategy=TYPE Selects the strategy to be used in Stage #4. Possible  
+                           values are: ORIGINAL_MM, ORTHOGONAL and OPTIMIZED.             
+                           Default Value: OPTIMIZED 
+
+[1mStage #5 Options:[0m
+-5, --stage-5           Executes only the stage #5 of algorithm, i.e., given   
+                           a list of coordinates of the optimal alignment,     
+                           returns the full alignment (as binary output).      
+
+[1mStage #6 Options:[0m
+-6, --stage-6           Executes only the stage #6 of algorithm, i.e., given   
+                           an alignment in binary format, returns the full     
+                           alignment in the format defined in with the         
+                           --output-format argument.
+--output-format=FORMAT  Selects the output format of the full alignment        
+                           in stage #6. Possibile formats may be listed with   
+                           the --list-formats parameter. 
+--list-formats          Lists all the possible output formats for stage #6.    
+
+
+[1mCUDA Specific Options:[0m
+--gpu=GPU           Selects the index of GPU used for the computation. If  
+                           GPU is not informed, the fastest GPU is selected.   
+                           A list of available GPUs can be obtained with the   
+                           --list-gpus parameter. 
+--list-gpus             Lists all available GPUs. 
+--blocks=B              Run B CUDA Blocks
+
+
