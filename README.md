@@ -1,7 +1,9 @@
-# Masa-Cudalign-Apa
+# Masa-Cudalign-APA
 
 
 ## Donwload 
+
+Última Versão: 
 
 ## Compilação do CUDAlign 
 
