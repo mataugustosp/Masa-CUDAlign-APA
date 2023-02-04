@@ -5,10 +5,26 @@
 
 Última Versão: 
 
-## Compilação do CUDAlign 
+## Compilando o CUDAlign 
 
-## Compilação Módulo APA 
+```console
+cd masa-cudalign-apa/masa-cudalign
+./configure 
+make 
+```
 
-## Execução Módulo APA 
+## Compilando o Módulo APA
 
-## Desempenho 
+No diretório masa-cudalign-apa: 
+
+```console
+  g++ modulo_apa.cpp -o apa 
+```
+
+## Executando o Módulo APA  
+
+```console
+  ./apa [options] seq1.fasta seq2.fasta 
+```
+
+  
