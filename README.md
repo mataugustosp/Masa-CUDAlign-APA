@@ -1,10 +1,12 @@
 # Masa-Cudalign-Apa
 
 
-##Donwload 
+## Donwload 
 
 ## Compilação do CUDAlign 
 
 ## Compilação Módulo APA 
 
 ## Execução Módulo APA 
+
+## Desempenho 
