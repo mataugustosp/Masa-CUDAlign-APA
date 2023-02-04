@@ -3,9 +3,9 @@
 
 ## Donwload 
 
-Última Versão: 
+Latest Version: 
 
-## Compilando o CUDAlign 
+## Compiling CUDAlign 
 
 ```console
 cd masa-cudalign-apa/masa-cudalign
@@ -13,7 +13,7 @@ cd masa-cudalign-apa/masa-cudalign
 make 
 ```
 
-## Compilando o Módulo APA
+## Compiling APA Module
 
 No diretório masa-cudalign-apa: 
 
@@ -21,7 +21,7 @@ No diretório masa-cudalign-apa:
   g++ modulo_apa.cpp -o apa 
 ```
 
-## Executando o Módulo APA  
+## Executing APA Module
 
 ```console
   ./apa [options] seq1.fasta seq2.fasta 
