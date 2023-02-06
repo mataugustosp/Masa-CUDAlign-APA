@@ -1,6 +1,6 @@
 # Masa-Cudalign-APA
 
-Este trabalho de graduação apresenta o Módulo de Alinhamento com Poda Agilizada (APA) que, integrado à ferramenta MASA-CUDAlign para 1 GPU, modifica a otimização de descarte de blocos Block Pruning, buscando agilizar a poda e  aumentar área de descarte da matriz de programação dinâmica. Com esse fim, utiliza-se o alinhador heurístico BLAST para a geração de um escore inicial a ser inserido automaticamente no MASA-CUDAlign, que inicialmente tinha escore 0.
+The comparison of biological sequences is one of the main tasks in Bioinformatics, existing a range of exact algorithms that use dynamic programming for this purpose. These algorithms have quadratic complexity in time $O({n^2})$ and can take a lot of execution time depending on the situation. To alleviate this problem, parallel tools have been proposed. This Project presents the Agile Pruning Alignment Module (APA) that is integrated with the parallel tool MASA-CUDAlign for one GPU and modifies the Block Pruning optimization strategy, seeking to speed up pruning and increase the the dynamic programming matrix's discard area. For this purpose, the heuristic aligner BLAST is used to generate an initial score to be automatically inserted into MASA-CUDAlign, which initially had a score of 0.
 
 ### Donwload 
 
@@ -16,7 +16,7 @@ make
 
 ### Compiling APA Module
 
-No diretório masa-cudalign-apa: 
+In masa-cudalign-apa directory: 
 
 ```console
   g++ modulo_apa.cpp -o apa 
