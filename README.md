@@ -8,7 +8,7 @@ The comparison of biological sequences is one of the main tasks in Bioinformatic
 git clone https://github.com/mataugustosp/masa-cudalign-apa.git
 ```
 
-### Compiling CUDAlign 
+### Compiling MASA-CUDAlign 
 
 ```console
 cd masa-cudalign-apa/masa-cudalign
