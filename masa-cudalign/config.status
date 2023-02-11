@@ -438,7 +438,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/matheus_pinho/Documentos/masa-cudalign-newmodule/masa-cudalign'
+ac_pwd='/home/matheus_pinho/Área de Trabalho/masa-cudalign-apa/masa-cudalign'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/usr/bin/mkdir -p'
@@ -668,12 +668,12 @@ S["mkdir_p"]="$(MKDIR_P)"
 S["MKDIR_P"]="/usr/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]=""
-S["install_sh"]="${SHELL} /home/matheus_pinho/Documentos/masa-cudalign-newmodule/masa-cudalign/admin/install-sh"
-S["MAKEINFO"]="${SHELL} /home/matheus_pinho/Documentos/masa-cudalign-newmodule/masa-cudalign/admin/missing makeinfo"
-S["AUTOHEADER"]="${SHELL} /home/matheus_pinho/Documentos/masa-cudalign-newmodule/masa-cudalign/admin/missing autoheader"
-S["AUTOMAKE"]="${SHELL} /home/matheus_pinho/Documentos/masa-cudalign-newmodule/masa-cudalign/admin/missing automake-1.16"
-S["AUTOCONF"]="${SHELL} /home/matheus_pinho/Documentos/masa-cudalign-newmodule/masa-cudalign/admin/missing autoconf"
-S["ACLOCAL"]="${SHELL} /home/matheus_pinho/Documentos/masa-cudalign-newmodule/masa-cudalign/admin/missing aclocal-1.16"
+S["install_sh"]="${SHELL} '/home/matheus_pinho/Área de Trabalho/masa-cudalign-apa/masa-cudalign/admin/install-sh'"
+S["MAKEINFO"]="${SHELL} \"/home/matheus_pinho/Área de Trabalho/masa-cudalign-apa/masa-cudalign/admin/missing\" makeinfo"
+S["AUTOHEADER"]="${SHELL} \"/home/matheus_pinho/Área de Trabalho/masa-cudalign-apa/masa-cudalign/admin/missing\" autoheader"
+S["AUTOMAKE"]="${SHELL} \"/home/matheus_pinho/Área de Trabalho/masa-cudalign-apa/masa-cudalign/admin/missing\" automake-1.16"
+S["AUTOCONF"]="${SHELL} \"/home/matheus_pinho/Área de Trabalho/masa-cudalign-apa/masa-cudalign/admin/missing\" autoconf"
+S["ACLOCAL"]="${SHELL} \"/home/matheus_pinho/Área de Trabalho/masa-cudalign-apa/masa-cudalign/admin/missing\" aclocal-1.16"
 S["VERSION"]="4.0.2.1028"
 S["PACKAGE"]="masa-cudalign"
 S["CYGPATH_W"]="echo"

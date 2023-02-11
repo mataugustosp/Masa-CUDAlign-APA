@@ -1,3 +1,13 @@
+/* 
+    Universidade de Brasília (UnB)
+
+    PROJETO FINAL EM ENGENHARIA DE COMPUTAÇÃO 
+    Aluno: Matheus Augusto Silva Pinho 
+
+*/
+
+
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -9,20 +19,20 @@
 #define INF 999999999
 
 /*
+
+    Compilando o CUDAlign: 
+   ./configure --with-cuda=/usr/lib/cuda --with-nvcc=/usr/bin
+    make
+
+   Rodando o CUDAlign: 
+   ./cudalign  ../trimmed_bases/AE016879.1.fasta ../trimmed_bases/AE016879.1.fasta
    g++ modulo_apa.cpp -o apa
    ./apa flag file1 file2
 
-   Flags
-
-   -t
-   -f
-   -ns
-
-   Compilando o CUDA
-   ./configure --with-cuda=/usr/lib/cuda --with-nvcc=/usr/bin
-    make
-   Rodando o CUDA
-   ./cudalign  ../trimmed_bases/AE016879.1.fasta ../trimmed_bases/AE016879.1.fasta
+   Flags:
+   -t ou --trimmed
+   -f ou --full
+   -ns ou --noscore
 */
 
 using namespace std;
@@ -30,11 +40,11 @@ using namespace std;
 void trim(string arqv1, string cropped_arqv1, string arqv2, string cropped_arqv2)
 {
     // Executa o trim no arquivo 1 e insere em trimmed_bases
-    string cmd = "awk 'NR==1, NR==295380' " + arqv1 + " > " + "trimmed_bases/" + cropped_arqv1;
+    string cmd = "awk 'NR==1, NR==29538' " + arqv1 + " > " + "trimmed_bases/" + cropped_arqv1;
     system(cmd.c_str());
 
     // Executa o trim no arquivo 2 e insere em trimmed_bases
-    cmd = "awk 'NR==1, NR==295380' " + arqv2 + " > " + "trimmed_bases/" + cropped_arqv2;
+    cmd = "awk 'NR==1, NR==29538' " + arqv2 + " > " + "trimmed_bases/" + cropped_arqv2;
     system(cmd.c_str());
 }
 
@@ -85,6 +95,7 @@ void executeModule(string arqv1, string arqv2, int score)
         trim(arqv1, cropped_arqv1, arqv2, cropped_arqv2);
 
         // Executa o Blastn
+        
         cmd = "./blastn_linux -subject trimmed_bases/" + cropped_arqv1 + " -query trimmed_bases/" + cropped_arqv2 + " -gapopen 5 -gapextend 2 -penalty -3 -reward 1 -num_alignments 1 > output";
         system(cmd.c_str());
 
@@ -129,12 +140,16 @@ int main(int argc, char **argv)
     {
         executeModule(arqv1, arqv2, 2);
     }
-    else
+    else if (flag1 == "-ns" || flag1 == "--noscore")
     {
         executeModule(arqv1, arqv2, 3);
     }
+    else
+    {
+        cout << "ERRO: A execução do Módulo APA deve ser feita seguindo o padrão:" << endl << "./apa flag file1 file2" << endl;
+    }
     time(&end);
     double time_taken = double(end - start);
-    cout << "Time taken by program is : " << fixed << time_taken << setprecision(5) << " sec"; 
+    cout << "Time taken by program is : " << fixed << time_taken << setprecision(5) << " sec" << endl; 
     return 0;
 }
